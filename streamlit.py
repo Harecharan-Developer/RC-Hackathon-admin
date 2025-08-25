@@ -6,13 +6,13 @@ from pymongo import MongoClient
 from pymongo.server_api import ServerApi
 from bson.objectid import ObjectId
 import pandas as pd
+import dotenv
 
 # -----------------------------
 # DB CONNECTION
 # -----------------------------
-username = "ashik1234d"
-password = "1234567812345678"
-uri = f"mongodb+srv://{username}:{password}@cluster0.nyaadry.mongodb.net/?retryWrites=false&w=majority&appName=Cluster0"
+
+uri = f"mongodb+srv://{dotenv.get('MONGO_USERNAME')}:{dotenv.get('MONGO_PASSWORD')}@cluster0.nyaadry.mongodb.net/?retryWrites=false&w=majority&appName=Cluster0"
 
 client = MongoClient(uri, server_api=ServerApi("1"))
 db = client["hirelink"]
