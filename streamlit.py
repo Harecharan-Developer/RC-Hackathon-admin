@@ -255,3 +255,15 @@ with col2:
                     st.markdown('</div>', unsafe_allow_html=True)
         
         st.markdown('</div>', unsafe_allow_html=True)
+        
+
+# If this is the main file being run
+if __name__ == "__main__":
+    # This block only runs when you execute the file directly
+    # It won't run when Render runs the app using the startCommand
+    import streamlit.web.cli as stcli
+    import sys
+    
+    port = int(os.environ.get("PORT", 8501))
+    sys.argv = ["streamlit", "run", sys.argv[0], "--server.port", str(port), "--server.address", "0.0.0.0"]
+    sys.exit(stcli.main())
